@@ -7,7 +7,7 @@ RUN mvn clean package -Dmaven.test.skip=true --settings ./deploy/.m2/settings.xm
 
 FROM swr.cn-east-3.myhuaweicloud.com/dangqu-powertrade/adoptopenjdk/openjdk11:jdk-11.0.9.1_1 AS final
 WORKDIR /opt/app
-EXPOSE 8080
-COPY --from=builder /usr/src/app/server/target/server-*.jar grpc-server.jar
+EXPOSE 8081
+COPY --from=builder /usr/src/app/client/target/client-*.jar grpc-client.jar
 
-ENTRYPOINT ["java", "-XX:+UseContainerSupport","-XX:InitialRAMPercentage=50","-XX:MaxRAMPercentage=70",  "-jar", "grpc-server.jar"]
+ENTRYPOINT ["java", "-XX:+UseContainerSupport","-XX:InitialRAMPercentage=50","-XX:MaxRAMPercentage=70",  "-jar", "grpc-client.jar"]
