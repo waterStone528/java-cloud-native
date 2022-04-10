@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: zx-web
+  labels:
+    app: zx-web
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zx-web
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: zx-web
+        version: v1
+    spec:
+      containers:
+      - name: zx-web
+        image: zx-web:latest
+        imagePullPolicy: Never
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+        ports:
+        - containerPort: 8080

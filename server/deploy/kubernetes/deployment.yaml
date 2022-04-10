@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: grpc-server
+  labels:
+    app: grpc-server
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-server
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+        version: v1
+    spec:
+      containers:
+        - name: grpc-server
+          image: grpc-server:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "200m"
+              memory: "200Mi"
+          ports:
+            - containerPort: 8081

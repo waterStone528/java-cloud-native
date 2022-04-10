@@ -1,2 +1,8 @@
 server:
-  port: 8081
+  port: 8082
+
+zx:
+  grpc:
+      server:
+        host: ${GRPC_SERVER_SERVICE_HOST}
+        port: ${GRPC_SERVER_SERVICE_PORT_GRPC}

@@ -2,6 +2,7 @@ package zx.com.grpc.service.helloworld.stub;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import zx.com.grpc.service.helloworld.GreeterGrpc;
 import zx.com.grpc.service.helloworld.HelloReply;
@@ -15,15 +16,18 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class HellowStub {
+    @Value("${zx.grpc.server.host}")
+    String host;
+    @Value("${zx.grpc.server.port}")
+    String port;
     private ManagedChannel managedChannel = null;
     private GreeterGrpc.GreeterBlockingStub greeterBlockingStub = null;
 
     @PostConstruct
     public void init(){
-        String host = "localhost";
-        int port = 50051;
+        System.out.println(String.format("grpc server host=%s, port=%s", host, port));
 
-        managedChannel = ManagedChannelBuilder.forAddress(host, port)
+        managedChannel = ManagedChannelBuilder.forAddress(host, Integer.valueOf(port))
                 .usePlaintext().build();
         greeterBlockingStub = GreeterGrpc.newBlockingStub(managedChannel);
     }
