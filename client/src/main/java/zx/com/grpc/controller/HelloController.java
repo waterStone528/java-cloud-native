@@ -17,7 +17,14 @@ public class HelloController {
     @Resource
     HellowStub hellowStub;
 
-    @RequestMapping("/hello/{name}")
+    @RequestMapping("/client/echo/{name}")
+    public String echo(@PathVariable String name){
+        System.out.println("echo name=" + name);
+
+        return name;
+    }
+
+    @RequestMapping("/grpc/hello/{name}")
     public String hello(@PathVariable String name){
         System.out.println("收到hello请求， name=" + name);
         String result = hellowStub.request(name);
@@ -25,4 +32,6 @@ public class HelloController {
 
         return result;
     }
+
+
 }

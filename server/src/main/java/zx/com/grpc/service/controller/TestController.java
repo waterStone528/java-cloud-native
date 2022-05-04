@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @RequestMapping("/echo/{name}")
+    @RequestMapping("/server/echo/{name}")
     public String echo(@PathVariable String name){
         System.out.println("echo name=" + name);
 

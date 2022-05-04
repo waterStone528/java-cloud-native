@@ -4,5 +4,5 @@ server:
 zx:
   grpc:
       server:
-        host: ${GRPC_SERVER_SERVICE_HOST}
-        port: ${GRPC_SERVER_SERVICE_PORT_GRPC}
+        host: grpc-server
+        port: 50051

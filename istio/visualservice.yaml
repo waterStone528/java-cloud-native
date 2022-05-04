@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: java-cloud-native
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - java-cloud-native-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /server
+    route:
+    - destination:
+        host: grpc-server
+        port:
+          number: 8081
+  - match:
+      - uri:
+        prefix: /client
+      route:
+      - destination:
+          host: grpc-client
+          port:
+            number: 8082
