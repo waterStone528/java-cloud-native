@@ -18,6 +18,8 @@
         <module>server</module>
         <module>client</module>
         <module>zx-web</module>
+        <module>server-grpc-spring-boot-starter</module>
+        <module>client-grpc-spring-boot-starter</module>
     </modules>
 
     <properties>

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "pt.grpc.service.user";
+option csharp_namespace = "PtGrpcServiceUser";
+
+package pt.gprc.service.user;
+
+service User {
+  rpc GetUserName (GetUserNameRequest) returns (GetUserNameResponse) {}
+}
+
+message GetUserNameRequest {
+  string id = 1;
+}
+
+message GetUserNameResponse {
+  string name = 1;
+}
